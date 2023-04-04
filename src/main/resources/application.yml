@@ -1,0 +1,4 @@
+#给所有实体类表映射的schema加前缀
+schemaPrefix: gd_
+logging:
+  config: 'classpath:logback-spring.xml'

@@ -1,0 +1,21 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+  application:
+    name: parkingmanage
+  cloud:
+    nacos:
+      discovery:
+        server-addr:
+        namespace: gd-park-${spring.profiles.active}-pjg
+      config:
+        server-addr:
+        file-extension: yaml
+        namespace: gd-park-test2
+#        namespace: gd-park-test2
+#        namespace: gd-park-pro
+        shared-dataids: parkingmanage.yaml,parkingmanage-message.properties,allinpay.yaml,common.yaml
+        refreshable-dataids: parkingmanage-message.properties,allinpay.yaml,common.yaml
+        group: DEFAULT_GROUP
