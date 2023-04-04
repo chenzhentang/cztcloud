@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.czt</groupId>
+    <artifactId>cztcloud</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <!--平台模块版本控制-->
+        <cztplat.version>0.1.0-SNAPSHOT</cztplat.version>
+        <spring.boot.version>2.3.10.RELEASE</spring.boot.version>
+        <springcloud.version>Hoxton.SR11</springcloud.version>
+        <springcloud-alibaba.version>2.1.0.RELEASE</springcloud-alibaba.version>
+        <!-- 存在安全漏洞的版本：5.2.0-5.2.8、5.1.0-5.1.17、5.0.0-5.0.18、4.3.0-4.3.28及更早期的版本 -->
+        <!-- 安全的版本：5.2.9、5.1.18、5.0.19、4.3.29 -->
+        <spring-framework.version>5.2.14.RELEASE</spring-framework.version>
+        <codingapi.txlcn.version>5.0.2.RELEASE</codingapi.txlcn.version>
+        <mysql.version>8.0.23</mysql.version>
+        <oracle.version>19.8.0.0</oracle.version>
+        <druid.version>1.2.3</druid.version>
+        <flywaydb.version>5.0.3</flywaydb.version>
+        <springfox.swagger.version>2.7.0</springfox.swagger.version>
+        <swagger-bootstrap-ui.version>1.9.6</swagger-bootstrap-ui.version>
+        <guava.version>28.0-jre</guava.version>
+        <gson.version>2.8.9</gson.version>
+        <common-lang3.version>3.12.0</common-lang3.version>
+        <common-lang.version>2.6</common-lang.version>
+        <commons-pool.version>1.6</commons-pool.version>
+        <commons-net.version>3.6</commons-net.version>
+        <commons-io.version>2.8.0</commons-io.version>
+        <commons-collections.version>3.2.2</commons-collections.version>
+        <fastjson.version>1.2.78</fastjson.version>
+        <jackson.version>2.11.4</jackson.version>
+        <httpclient.version>4.5.13</httpclient.version>
+        <HikariCP.version>3.4.5</HikariCP.version>
+        <logback.version>1.2.10</logback.version>
+        <freemarker.version>2.3.31</freemarker.version>
+        <jedis.version>3.3.0</jedis.version>
+        <hibernate-redis.version>3.15.4</hibernate-redis.version>
+        <fakepath.hibernate-memcached.version>1.2.2</fakepath.hibernate-memcached.version>
+        <fakepath.spy.version>2.4</fakepath.spy.version>
+        <nacos-client.version>2.0.1</nacos-client.version>
+        <fakepath.memcached.version>2.1</fakepath.memcached.version>
+        <java_memcache.version>2.6.3</java_memcache.version>
+        <sftp.version>0.1.54</sftp.version>
+        <minio.version>7.1.0</minio.version>
+        <dubbo.version>3.0.2</dubbo.version>
+        <postgresql.version>42.3.1</postgresql.version>
+        <log4j.version>2.17.1</log4j.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- module -->
+            <!--<dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>cztcloudbasic</artifactId>
+                <version>${cztplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>cztcloudremote</artifactId>
+                <version>${cztplat.version}</version>
+            </dependency>-->
+            <!--<dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>dhcccloudframe-api</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>-->
+            <!--<dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>cztcloudframe</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>cztcloudlog</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>-->
+            <!--<dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>dhcccloudfile</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>dhcccloudserviceapi</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>dhcccloudworkflow</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>dhcccloudquartz</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>flow-single</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>dhcccloudsso</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dhcc</groupId>
+                <artifactId>flow-micro</artifactId>
+                <version>${dhccplat.version}</version>
+            </dependency>-->
+
+            <!-- spring cloud  -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${springcloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework.cloud</groupId>
+                        <artifactId>spring-cloud-sleuth-zipkin-stream</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- spring boot -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--Spring cloud alibaba-->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${springcloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!--org.springframework-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-beans</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-expression</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-jdbc</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-messaging</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-oxm</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+
+            <!--jackson-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version><!-- 安全指导书上建议用2.8.11或2.9.5的版本 -->
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-yaml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.zaxxer</groupId>
+                <artifactId>HikariCP</artifactId>
+                <version>${HikariCP.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>${freemarker.version}</version>
+            </dependency>
+
+            <!-- https://www.cnblogs.com/andyfengzp/p/6434287.html <dependency> <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-data-redis</artifactId> <version>1.3.5.RELEASE</version>
+                </dependency> -->
+            <!-- 1.3.5 need springmvc 4.2.9, 2.0.10 need springmvc 5.0.13, 2.1.6 need
+                springmvc 5.1.7 -->
+
+            <!-- https://blog.csdn.net/panzm_csdn/article/details/79700101 -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-hibernate-53</artifactId>
+                <version>${hibernate-redis.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>java_memcache</groupId>
+                <artifactId>java_memcache</artifactId> <!-- danga.MemCachedClient -->
+                <version>${java_memcache.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-pool</groupId>
+                <artifactId>commons-pool</artifactId>
+                <version>${commons-pool.version}</version>
+            </dependency>
+
+            <!--<dependency>
+                <groupId>fakepath</groupId> &lt;!&ndash; org.hibernate &ndash;&gt;
+                <artifactId>hibernate-memcached</artifactId> &lt;!&ndash; googlecode.hibernate.memcached &ndash;&gt;
+                <version>${fakepath.hibernate-memcached.version}</version> &lt;!&ndash; 这个1.5是用网上下载的1.5再加入1.2.2里的spymemcached &ndash;&gt;
+            </dependency>
+            <dependency>
+                <groupId>fakepath</groupId>
+                <artifactId>spy</artifactId> &lt;!&ndash; spy本身 &ndash;&gt;
+                <version>${fakepath.spy.version}</version> &lt;!&ndash; 2.7 &ndash;&gt;
+            </dependency>
+            <dependency>
+                <groupId>fakepath</groupId>
+                <artifactId>memcached</artifactId> &lt;!&ndash; spy结合memcached &ndash;&gt;
+                <version>${fakepath.memcached.version}</version>
+            </dependency>-->
+
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.oracle.database.jdbc</groupId>
+                <artifactId>ojdbc8</artifactId>
+                <version>${oracle.version}</version>
+            </dependency>
+
+            <!--<dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgresql.version}</version>
+            </dependency>-->
+
+            <!--			数据库脚本版本管理工具-->
+            <!--<dependency>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-core</artifactId>
+                <version>${flywaydb.version}</version>
+            </dependency>-->
+
+            <!-- txlcn分布式事务框架。https://blog.csdn.net/yhmliunan/article/details/102694611 -->
+            <!-- 客户端 -->
+            <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-tc</artifactId>
+                <version>${codingapi.txlcn.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-txmsg-netty</artifactId>
+                <version>${codingapi.txlcn.version}</version>
+            </dependency>
+            <!-- 服务端 -->
+            <!--<dependency>
+                <groupId>com.codingapi.txlcn</groupId>
+                <artifactId>txlcn-tm</artifactId>
+                <version>${codingapi.txlcn.version}</version>
+            </dependency>-->
+
+            <!-- https://mvnrepository.com/artifact/com.alibaba/fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+                <version>${common-lang.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${common-lang3.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+            <!--		使用例子	https://blog.csdn.net/wwwdc1012/article/details/82228458-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>
+            <!--<dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox.swagger.version}</version>
+            </dependency>-->
+            <!-- https://mvnrepository.com/artifact/com.github.xiaoymin/swagger-bootstrap-ui -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>${swagger-bootstrap-ui.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <!--<dependency>
+                <groupId>org.apache.dubbo</groupId>
+                <artifactId>dubbo</artifactId>
+                <version>${dubbo.version}</version>
+            </dependency>-->
+            <!-- sftp上传依赖包 -->
+            <!--<dependency>
+                <groupId>com.jcraft</groupId>
+                <artifactId>jsch</artifactId>
+                <version>${sftp.version}</version>
+            </dependency>-->
+            <!-- minio上传依赖包 -->
+            <!--<dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${minio.version}</version>
+            </dependency>-->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-to-slf4j</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+
+    <!-- 以下配置相当于普通打包，只把工程自身的内容输出成jar -->
+    <!-- <build> -->
+    <!-- <plugins> -->
+    <!-- <plugin> -->
+    <!-- <groupId>org.springframework.boot</groupId> -->
+    <!-- <artifactId>spring-boot-maven-plugin</artifactId> -->
+    <!-- <configuration> -->
+    <!-- <includeSystemScope>true</includeSystemScope>https://www.cnblogs.com/stm32stm32/p/9973325.html -->
+    <!-- <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments> -->
+    <!-- </configuration> -->
+    <!-- </plugin> -->
+    <!-- </plugins> -->
+    <!-- <resources> -->
+    <!-- <resource> -->
+    <!-- <directory>src/main/resources</directory> -->
+    <!-- </resource> -->
+    <!-- <resource> -->
+    <!-- <directory>src/main/webapp</directory> -->
+    <!-- </resource> -->
+    <!-- </resources> -->
+    <!-- </build> -->
+
+    <!-- 以下配置先由maven给工程本身代码打包，然后由boot做一次repackage输出成boot的大jar包 -->
+    <!-- <build> <plugins> <plugin> <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId> <version>3.5.1</version> <configuration>
+        <source>1.6</source> <target>1.6</target> <compilerArgs> 过期的方法的警告 <arg>-Xlint:deprecation</arg>
+        </compilerArgs> </configuration> </plugin> <plugin> <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId> <executions> <execution>
+        <goals> <goal>repackage</goal> </goals> </execution> </executions> </plugin>
+        </plugins> </build> -->
+
+    <!-- 发布maven私服 -->
+    <!--<distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://119.255.194.120:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>nexus</name>
+            <url>http://119.255.194.120:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>-->
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring.boot.version}</version>
+                    <configuration>
+                        <!-- <source>1.8</source> -->
+                        <!-- <target>1.8</target> -->
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>repackage</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.2.0</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <modules>
+
+        <module>cztcloudbasic</module>
+        <module>cztcloudframe</module>
+
+        <!--
+
+
+        <module>cztcloudremote</module>
+        <module>cztcloudlog</module>
+        <module>api-gateway</module>
+        <module>gr-project</module>-->
+        <!--<module>dhcccloudfile</module>
+        <module>dhcccloudsso</module>
+        <module>flow-micro</module>
+        <module>flow-single</module>
+        <module>dhcccloudframe-api</module>
+        <module>dhcccloudworkflow</module>
+        <module>assembly</module>
+        <module>dhcccloudquartz</module>-->
+    </modules>
+
+</project>
